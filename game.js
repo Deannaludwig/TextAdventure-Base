@@ -3,6 +3,9 @@ var player = function(){
     name: name,
     items: [],
     }
+    newPlayer.drop = function() {
+      this.items.pop();
+     };
     newPlayer.pickup = function(item){
       this.items.push(item);
      };
@@ -11,22 +14,52 @@ var player = function(){
           var inventoryHTML = querySelector('ul');
           return inventoryHTML += this.items[i];
        }
+     }
 };
 
 var interpret = function(input){
   var str = input.toLowerCase().trim();
-  var res = input.split(" ");
-  var a = splitInput(' ');
-  splitInput.remove(0);
-  var inventory ='';
-  for (i =1; < splitInput.length; i++0[
-      inventory = inventory + splitInput[i] + ' ';
+  var res = str.split(" ");
+  // var a = splitInput(' ');
+  // splitInput.remove(0);
+  var inventory = [];
+  for (i =1; i < res.length; i++){
+      inventory.push(res[i] + ' ');
       };
       return inventory;
  };
  
  var execute = function(inventory){
-    var action = inventory[0];
-    var object = inventory[1];
-    player[action](object);
- };
+    var action = inventory.splice(0,0);
+    var object = inventory;
+    // player[action](object);
+    var action = function(object){
+    }
+
+  };
+
+  var report = function(inventory){
+    var list = document.getElementById('inventoryList');
+    for (var i = 0; i < inventory.length; i++) {
+      var li = document.createElement('li')
+      li.appendChild(document.createTextNode(inventory[i]));
+      list.appendChild(li);
+    };
+  }
+
+   var gameStep = function (){
+    if (event.keyCode === 13){
+    var array = interpret(action.value);
+    execute(array)
+    report(array)
+}
+
+
+   
+   }
+
+
+
+
+
+
